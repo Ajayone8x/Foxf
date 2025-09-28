@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
 
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -78,13 +79,9 @@
 </head>
 
 <body>
-  <center>
-    <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;">
-      <video autoplay muted playsinline data-shaka-player id="video"
-        poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true"
-        style="width:100%;height:100%"></video>
-    </div>
-  </center>
+  <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;">
+    <video autoplay muted playsinline data-shaka-player id="video" poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true" style="width:100%;height:100%"></video>
+  </div>
 
   <div class="telegram-popup" id="telegramPopup">
     <h2>Support Us!</h2>
@@ -93,14 +90,8 @@
     <button class="joined" onclick="document.getElementById('telegramPopup').style.display='none';">Already Joined</button>
   </div>
 
-      <script>
-    // TEST MESSAGE 1
-    console.log("Script block has started. Waiting for Shaka Player to load...");
-
-    document.addEventListener("shaka-ui-loaded", function () {
-      // TEST MESSAGE 2
-      console.log("Shaka UI has loaded! Configuring player...");
-
+  <script>
+    document.addEventListener("shaka-ui-loaded", function() {
       const video = document.getElementById("video");
       const ui = video["ui"];
       const controls = ui.getControls();
@@ -109,7 +100,7 @@
       player.configure({
         drm: {
           clearKeys: {
-         "a2ba14ee5ef4440d8e56a8bb5403117d": "b77a334fd7aff9c9960ca7785a20ea66"
+            "a2ba14ee5ef4440d8e56a8bb5403117d": "b77a334fd7aff9c9960ca7785a20ea66"
           }
         },
         streaming: {
@@ -133,11 +124,18 @@
         controlPanelElements: [
           "play_pause", "mute", "volume", "spacer", "time_and_duration", "quality", "fullscreen", "overflow_menu"
         ],
-        volumeBarColors: { base: 'rgba(63, 187, 1, 1)', level: 'rgb(255, 69, 0)' },
-        seekBarColors: { base: 'rgb(41, 41, 163)', buffered: 'rgb(35, 99, 3)', played: 'rgba(63, 187, 1, 1)' }
+        volumeBarColors: {
+          base: 'rgba(63, 187, 1, 1)',
+          level: 'rgb(255, 69, 0)'
+        },
+        seekBarColors: {
+          base: 'rgb(41, 41, 163)',
+          buffered: 'rgb(35, 99, 3)',
+          played: 'rgba(63, 187, 1, 1)'
+        }
       });
 
-      const originalUrl = "https://live1-814bffb9b389f652-cf.foxtelgroupcdn.net.au/out/v1/c1566607e84d4dd0bc7e53bc26943d14/index.mpd";
+      const originalUrl = "https://live1-814bffb389f652-cf.foxtelgroupcdn.net.au/out/v1/c1566607e84d4dd0bc7e53bc26943d14/index.mpd";
       const workerUrl = "https://dry-leaf-908b.gwajay73.workers.dev/";
       const proxyUrl = `${workerUrl}?url=${encodeURIComponent(originalUrl)}`;
 
@@ -148,12 +146,10 @@
         .catch(error => console.error("Video load error via Worker:", error));
     });
 
-    document.addEventListener("shaka-ui-load-failed", function () {
+    document.addEventListener("shaka-ui-load-failed", function() {
       console.error("Shaka UI failed to load");
     });
   </script>
-
-
 </body>
 
 </html>
