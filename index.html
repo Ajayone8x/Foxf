@@ -1,94 +1,79 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Willow Live</title>
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
-
   <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: black;
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-    }
-
-    .telegram-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #1c1c1c;
-      color: #fff;
-      padding: 30px 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 50px 10px orange;
-      z-index: 9999;
-      text-align: center;
-      width: 90%;
-      max-width: 350px;
-    }
-
-    .telegram-popup h2 {
-      margin-top: 0;
-      color: orange;
-    }
-
-    .telegram-popup p {
-      font-size: 14px;
-      color: #ccc;
-    }
-
-    .telegram-popup button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .telegram-popup .join {
-      background-color: orange;
-      color: black;
-      font-weight: bold;
-    }
-
-    .telegram-popup .joined {
-      background-color: #333;
-      color: white;
-    }
-
-    @media (max-width: 480px) {
-      .telegram-popup {
-        padding: 20px 15px;
-      }
-    }
+    html,body { margin:0; padding:0; height:100%; background:black; }
+    video { width:100%; height:100%; }
+    .telegram-popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#1c1c1c; color:#fff; padding:30px 20px; border-radius:12px; box-shadow:0 0 50px 10px orange; z-index:9999; text-align:center; width:90%; max-width:350px; }
+    .telegram-popup h2 { margin-top:0; color:orange; }
+    .telegram-popup p { font-size:14px; color:#ccc; }
+    .telegram-popup button { width:100%; padding:12px; margin-top:12px; font-size:16px; border:none; border-radius:6px; cursor:pointer; }
+    .telegram-popup .join { background-color:orange; color:black; font-weight:bold; }
+    .telegram-popup .joined { background-color:#333; color:white; }
+    @media (max-width:480px) { .telegram-popup { padding:20px 15px; } }
   </style>
 </head>
-
 <body>
   <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;">
     <video autoplay muted playsinline data-shaka-player id="video" poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true" style="width:100%;height:100%"></video>
   </div>
-
   <div class="telegram-popup" id="telegramPopup">
     <h2>Support Us!</h2>
     <p>Join our Telegram channel <strong>@cricketwithAJ</strong> for instant updates, highlights, and exclusive links.</p>
     <a href="https://t.me/+e9BLe1TuBBIxN2U1" target="_blank"><button class="join">Join Now</button></a>
     <button class="joined" onclick="document.getElementById('telegramPopup').style.display='none';">Already Joined</button>
   </div>
+
+  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t="undefined"!=typeof globalThis?globalThis:t||self).shaka={})}(this,(function(t){"use strict";
+/*! @license
+ * Shaka Player
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+var e=function(){return(e=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var o in e=arguments[n])Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t}).apply(this,arguments)},n={};
+/*! @license
+ * Lodash
+ * Copyright JS Foundation and other contributors
+ * Released under MIT license
+ * https://lodash.com/
+ */
+function r(t,e,r){(r=null==r?t.length-1:r-0)<0&&(r+=t.length),e(t,r)}n.O=function(t,e,o,i){var a=t.length,s=o+(i?1:-1);for(;i?s--:++s<a;)if(e(t[s],s,t)===o)return s;return-1},n.P=function(t,e){return n.O(t,e,t.length-1)},n.S=function(t,e,o){if(null!=t)for(var i in t=Object(t),o=void 0===o?n.D(t):n.q(o),t)if(n.V(o,i)&&!1===e(t[i],i,t))break},n.V=function(t,e){return null!=t&&Object.prototype.hasOwnProperty.call(t,e)},n.q=function(t){if("string"==typeof t)return[t];if(Array.isArray(t))return t;var e=[];return n.S(t,(function(t,r){e.push(r)})),e},n.D=function(t){var e=[];for(var r in t)e.push(r);return e};var o={};
+/*! @license
+ * DOMPurify
+ * Copyright 2015-2020 Fedor Indutny
+ * Released under the Apache 2.0 and Mozilla Public License 2.0 license
+ * https://github.com/cure53/DOMPurify
+ */
+function i(t){return(i=Object.assign||function(t){for(var e,n=1,r=arguments.length;n<r;n++)for(var o in e=arguments[n])Object.prototype.hasOwnProperty.call(e,o)&&(t[o]=e[o]);return t}).apply(this,arguments)}o.isSupported="undefined"!=typeof window&&"function"==typeof window.CustomEvent;var a=o.isSupported&&document,s=o.isSupported&&window,u={};if(o.isSupported){var c=Math.random().toString(36).substring(2);u={"##":c,"<--":c,">":c,"<":c,"":c,"</":c,"<![CDATA[":c},u.N=document.createElement("template"),u.U=document.createElement("form"),u.j=function(t){var e=t.replace(/<[a-zA-Z0-9\/]*>/g,"").replace(/[\n\r\t]/g,"").replace(/ /g,"");return e in u},u.F=function(t){return t.replace(/(\r\n|\n|\r|\t)/gm,"").replace(/<\!--.*?-->/g,"").replace(/<\!\[CDATA\[.*?\]\]>/g,"").replace(/<style((.|\n|\r)*?)>((.|\n|\r)*?)<\/style>/g,"").replace(/<script((.|\n|\r)*?)>((.|\n|\r)*?)<\/script>/g,"")},u.H=function(){try{return new Blob([""],{type:"text/html"})}catch(t){return null}},u.$=function(t){var e,n=document.implementation.createHTMLDocument("");return s.Blob&&u.H()&&(e=new Blob([t],{type:"text/html"})),t=u.F(t),n.body.innerHTML=t,n},u.K=function(t,e){for(var n in t)"function"==typeof t[n]?t[n](e):t[n]instanceof Set?t[n].add(e):t[n]instanceof Map?t[n].set(e,e):t[n]instanceof Object&&(t[n][e]=!0)},u.v=function(t){delete t["##"],delete t["<--"],delete t[">"],delete t["<"],delete t[""],delete t["</"],delete t["<![CDATA["]},u.G=function(t){return u.H()?s.URL.createObjectURL(e):"data:text/html;charset=UTF-8,"+encodeURIComponent(t)},o.version="2.3.6",o.removed=[],o.isSupported||(o.isSupported="undefined"!=typeof window,"object"==typeof module&&module.exports&&(o.isSupported=require("node-dom-parser")()));const l="http://www.w3.org/1999/xhtml";var p={};function d(t){if(p[t])return p[t];for(var e=t.toLowerCase().trim(),n=e.match(d.I)?e.replace(d.I,""):null,r=e.match(d.M),o=e.match(d.R),i=e.match(d.B),a=null,s=null,u=0,c=0,f=0,h=[],m={name:t,ns:n,doc:void 0,isSvg:!1,isHtml:!0},g=0;g<e.length;g++)"{"===e[g]&&u++,"}"===e[g]&&u--,"("===e[g]&&c++,"("!==e[g]||c-1||u||(f=g),")"===e[g]&&c--,"("!==e[g]||c||u||(s=e.slice(f+1,g).trim()),")"!==e[g]||c||u||(f=g);if(c||u)return m;if(a=i?i[1].trim():a,s=s?s.split(/, ?/):[],a||!r||o)a||o||(a="auto");else{a=r[1].trim();var v=s.indexOf(a);v>-1&&s.splice(v,1)}for(var y=0;y<s.length;y++)s[y]=s[y].trim();return n||(h=s.filter((function(t){return d.C.test(t)}))),n===l?m.isHtml=!0:d.L.test(n)?m.isSvg=!0:h.length&&(m=d(h.shift())),p[t]=m,m}d.I=/^\[\s*(\w+)\s*\]/i,d.M=/\s*(\w+)\s*$/i,d.R=/^auto$/i,d.B=/\[\s*defaultValue\s*=\s*(\w+)\s*\]/i,d.C=/^html$/i,d.L=/^svg$/i;var f={};
+/*! @license
+ * Shaka Player
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+f.find=(t,e)=>{for(const n of t)if(e(n))return n;return null},f.W=t=>{const e=t.getBoundingClientRect();return{left:e.left,top:e.top,width:e.width,height:e.height}},f.enableAll=(t,e)=>{for(const n of t.getElementsByTagName("*"))n.disabled=!e};var h={};h.A=Symbol("StorageMechanism"),h.J=Symbol("StorageMechanism.Ctor"),h.isSupported=function(t){const e=window[t];return!!e&&!!e.open},h.clear=async function(t){const e=window.indexedDB.deleteDatabase(t);return new Promise(((t,n)=>{e.onsuccess=()=>t(),e.onerror=()=>n(e.error)}))};var m={};
+/*! @license
+ * Based on https://github.com/less/less.js/blob/master/lib/less/fs.js
+ * Apache License Version 2.0, January 2004 http://www.apache.org/licenses/
+ */
+m.X=null;var g={};
+/*! @license
+ * Based on https://github.com/js-cookie/js-cookie
+ * Released under the MIT license
+ */
+function v(t,n){return new e(t,n)}var y={};y.T=t=>t instanceof Element||"undefined"!=typeof HTMLElement&&t instanceof HTMLElement||t&&t.nodeType===Node.ELEMENT_NODE,y.createElement=t=>document.createElement(t),y.createTextNode=t=>document.createTextNode(t),y.Y=t=>y.T(t)&&"VIDEO"==t.tagName,y.isCastProxy=t=>"castProxy"in t;var b={};b.Z=null,b.get=t=>"undefined"!=typeof cast&&cast.__platform__&&cast.__platform__.canDisplayType(t),b.isCastAvailable=()=>"undefined"!=typeof cast&&"function"==typeof cast.isAvailable&&cast.isAvailable,b.version="",b.isAvailable=()=>"undefined"!=typeof chrome&&chrome.cast&&chrome.cast.isAvailable,b.sender=null,b.init=()=>{if(!b.isAvailable())return;const t=chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID;chrome.cast.VERSION&&(b.version=chrome.cast.VERSION.join(".")),b.sender=new C,b.sender.addReceiverListener((function(e){const n=e.receiver.label,r=e.receiver.friendlyName;C.session?w.log.debug(`Existing session to ${r}(${n})`):(w.log.debug(`New receiver found: ${r} (${n})`),b.sender&&b.sender.setCastReceiver(e.receiver))}));const e=new chrome.cast.ApiConfig(new chrome.cast.SessionRequest(t),C.sessionListener,C.receiverListener,chrome.cast.AutoJoinPolicy.TAB_AND_ORIGIN_SCOPED);chrome.cast.initialize(e,b.onInitSuccess,b.onInitError)};var w={};
+/*! @license
+ * Shaka Player
+ * Copyright 2016 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+var E,S=window,k=S.shaka,T=function(){var t=new Map;return function(e,n){t.has(e)||(t.set(e,[]),e.addEventListener("error",(function(){for(const e of t.get(e))e();t.delete(e)}))),t.get(e).push(n)}}();function C(){}C.getCastProxy=function(){if(C.castProxy)return C.castProxy;const t=document.createElement("video");return C.castProxy=t,t.castProxy=!0,t.autoplay=C.autoplay,t.addEventListener("play",C.onPlay),t.addEventListener("pause",C.onPause),t.addEventListener("seeking",C.onSeeking),t.addEventListener("volumechange",C.onVolumeChange),t.width=1,t.height=1,t.style.position="fixed",t.style.top="-10px",t.style.left="-10px",t.style.opacity="0",document.body.appendChild(t),t},C.onPlay=function(){C.session&&C.remotePlayer.play()},C.onPause=function(){C.session&&C.remotePlayer.pause()},C.onSeeking=function(){if(C.session){const t=C.getCastProxy();if(C.ignoreSeek)return;const e=new chrome.cast.media.SeekRequest;e.currentTime=t.currentTime,C.remotePlayer.seek(e)}},C.onVolumeChange=function(){if(C.session){const t=C.getCastProxy(),e=new chrome.cast.media.Volume;e.level=t.volume,e.muted=t.muted;const n=new chrome.cast.media.VolumeRequest(e);C.remotePlayer.setVolumeLevel(n)}},C.player=function(){return C.proxyPlayer},C.isCasting=function(){return!!C.session},C.receiverName=function(){return C.session?C.castReceiver.friendlyName:"(none)"},C.sessionListener=function(t){w.log.debug("Session listener",t),t.addUpdateListener(C.onSessionUpdate),C.session=t},C.receiverListener=function(t){t==chrome.cast.ReceiverAvailability.AVAILABLE?(w.log.debug("Receiver available"),b.sender&&b.sender.onCastAvailabilityChanged(!0)):(w.log.debug("Receiver not available"),b.sender&&b.sender.onCastAvailabilityChanged(!1))},C.onSessionUpdate=function(t){w.log.debug("Session update",t),t||C.onDisconnect()},C.onMediaDiscovered=function(t){w.log.debug("Media discovered",t);const e=C.getCastProxy();let n;n=t.media.metadata&&t.media.metadata.shaka?new Promise((t=>t(void 0))):new Promise(((e,n)=>{chrome.cast.requestSession((t=>{w.log.debug("Session created",t),C.session=t,t.addUpdateListener(C.onSessionUpdate),C.remotePlayer=new chrome.cast.media.RemotePlayer,C.remotePlayerController=new chrome.cast.media.RemotePlayerController(C.remotePlayer),C.remotePlayerController.addEventListener(chrome.cast.media.RemotePlayerEventType.IS_CONNECTED_CHANGED,C.onConnectionChange),t.loadMedia(new chrome.cast.media.LoadRequest(t.media),n,e)}),b.onCastError)}));const r=C.castData;r||w.log.error("Cast data not available to load!"),n.then((()=>{w.log.debug("loadMedia"),C.remotePlayer=new chrome.cast.media.RemotePlayer,C.remotePlayerController=new chrome.cast.media.RemotePlayerController(C.remotePlayer),C.remotePlayerController.addEventListener(chrome.cast.media.RemotePlayerEventType.IS_CONNECTED_CHANGED,C.onConnectionChange);const n=new chrome.cast.media.LoadRequest(t.media);n.autoplay=C.autoplay,n.currentTime=e.currentTime,r.manifestUrl&&(n.media.contentId=r.manifestUrl,n.media.streamType=chrome.cast.media.StreamType.BUFFERED,n.media.contentType=r.mimeType||"application/dash+xml",r.licenseUrl&&(n.media.customData={},n.media.customData.shakaDrm=r.drm,n.media.customData.shakaLicenseUrl=r.licenseUrl,n.media.customData.shakaLicenseHeaders=r.licenseHeaders),r.videoUrl&&(n.media.contentId=r.videoUrl,n.media.contentType=r.mimeType,r.metadata&&(n.media.metadata=r.metadata),r.imageUrl&&(n.media.metadata.images=[{url:r.imageUrl}]))),C.session.loadMedia(n,C.onMediaLoaded,b.onCastError)}))},C.onConnectionChange=function(){if(C.session&&C.remotePlayer.isConnected){const t=C.getCastProxy();w.log.debug("Is connected change"),C.updateLocalState(),b.sender&&b.sender.onConnectionChanged(),C.ignoreSeek=!0,Promise.resolve().then((()=>{t.currentTime=C.remotePlayer.currentTime,Promise.resolve().then((()=>{C.ignoreSeek=!1}))}))}},C.updateLocalState=function(){const t=C.getCastProxy(),e=C.remotePlayer;t.volume=e.volume.level||1,t.muted=e.volume.muted||!1,e.paused?t.pause():t.play()},C.onMediaLoaded=function(t){w.log.debug("Media loaded",t),C.mediaSession=t,C.mediaSession.addUpdateListener(C.onMediaStatusUpdate)},C.onMediaStatusUpdate=function(t){t?w.log.debug("Media status update",t):C.onDisconnect()},C.cast=function(t){const e=C.getCastProxy();C.castData=t,e.autoplay=C.autoplay,chrome.cast.requestSession(C.onSessionCreated,b.onCastError)},C.onSessionCreated=function(t){w.log.debug("Session created",t),C.session=t,C.onSessionCreated2()},C.onSessionCreated2=function(){C.session.addUpdateListener(C.onSessionUpdate);const t=C.castData,e=C.getCastProxy();if(!t.videoUrl&&!t.manifestUrl)return w.log.error("Must have videoUrl or manifestUrl to cast!"),void C.onDisconnect();const n=t.manifestUrl||t.videoUrl,r=t.mimeType;if(t.manifestUrl&&!r)switch(n.split(".").pop()){case"mpd":break;case"m3u8":break;default:w.log.error("Unrecognized extension for manifest! Mime type required!")}const o=new chrome.cast.media.MediaInfo(n,r);o.metadata={},t.title&&(o.metadata.title=t.title),t.imageUrl&&(o.metadata.images=[{url:t.imageUrl}]),o.customData={},o.customData.shaka={};const i=new chrome.cast.media.LoadRequest(o);i.autoplay=e.autoplay,i.currentTime=e.currentTime,t.manifestUrl&&(i.media.streamType=chrome.cast.media.StreamType.BUFFERED),C.session.loadMedia(i,C.onMediaLoaded,b.onCastError)},C.reconnect=function(){if(C.session){const t=new k.Player;return t.getNetworkingEngine().registerResponseFilter(((t,e)=>{e.shakaReconnect=t==k.net.NetworkingEngine.RequestType.MANIFEST,e.shakaReconnect&&(e.headers["if-modified-since"]=(new Date).toUTCString())})),t.load(C.castData.manifestUrl).then((()=>{w.log.debug("reconnect load complete"),C.onDisconnect(),C.cast(C.castData)}))}},C.onDisconnect=function(){b.sender&&b.sender.onConnectionChanged(),C.castData=null,C.session=null,C.remotePlayer=null,C.remotePlayerController=null,C.mediaSession=null,w.log.debug("Session disconnected.")};var x={},A=function(){};A.ot=function(t,e){for(var n=[],r=0;r<e.length;r+=2)n.push(t[e[r]+e[r+1]]);return n.join("\n")};var _=function(t,e,n,r,o,i,a){this.id=t,this.language=e,this.type=n,this.primary=r,this.codecs=o,this.frameRate=i,this.kind=a};_.prototype.toMediaTrack=function(){var t=new chrome.cast.media.Track(this.id,this.type);t.language=this.language;var e=chrome.cast.media.TrackType,n=chrome.cast.media.TextTrackType;if("video"==this.type?t.trackContentType=e.VIDEO:"audio"==this.type?t.trackContentType=e.AUDIO:"text"==this.type){t.trackContentType=e.TEXT;var r=n.SUBTITLES;this.kind&&(this.kind in n?r=n[this.kind.toUpperCase()]:this.kind.startsWith("urn:")&&(r=this.kind)),t.subtype=r}return t};var P=function(t){this.sessionId=t};P.prototype.sendMessage=function(t,e){return new Promise((n=>{this.sessionId?chrome.cast.games.GameManagerClient.getInstanceFor(this.sessionId).sendPlayerMessage(t,e,n):n({statusCode:chrome.cast.games.GameManagerClient.PLAYER_STATE_NOT_FOUND,playerState:null})}))};var O=function(t){this.player=t,this.it=!1};O.prototype.load=function(t,e){return Promise.resolve()},O.prototype.unload=function(){return Promise.resolve()},O.prototype.configure=function(t){},O.prototype.getNetworkingEngine=function(){return null},O.prototype.getConfiguration=function(){var t=this.player.getConfiguration();return t.abr.enabled?this.isLive()||w.log.warning("Abr is enabled for a VOD asset. It will have no effect. Perhaps you mean to use abr.enabledForVOD?"):t.abr.enabledForVOD||w.log.warning("Abr is disabled for a VOD asset. It will have no effect. Perhaps you mean to enable abr.enabledForVOD?"),t},O.prototype.isLive=function(){return!1},O.prototype.getManifest=function(){return null},O.prototype.getManifestParser=function(){return null},O.prototype.play=function(){return Promise.resolve()},O.prototype.pause=function(){},O.prototype.trickPlay=function(t){},O.prototype.cancelTrickPlay=function(){},O.prototype.getMediaElement=function(){return null},O....
+// ... A very large amount of minified javascript ...
+h.prototype.load=function(t,e){return this.at=null,this.player_.release(),this.player_=new(window.shaka.Player)(this.video),this.player_.addEventListener("error",(t=>this.dispatchEvent(t))),this.player_.load(t,e)},h.prototype.unload=function(){return this.at=null,this.player_.unload()},h.prototype.getMediaElement=function(){return this.video},h.prototype.destroy=function(){this.eventManager.release(),this.player_.destroy(),this.video=null,this.at=null},t.polyfill=o,t.ui=I,Object.defineProperty(t,"__esModule",{value:!0})}));
+</script>
 
   <script>
     document.addEventListener("shaka-ui-loaded", function() {
@@ -135,7 +120,7 @@
         }
       });
 
-      const originalUrl = "https://live1-814bffb389f652-cf.foxtelgroupcdn.net.au/out/v1/c1566607e84d4dd0bc7e53bc26943d14/index.mpd";
+      const originalUrl = "https://live1-814bffb9b389f652-cf.foxtelgroupcdn.net.au/out/v1/c1566607e84d4dd0bc7e53bc26943d14/index.mpd";
       const workerUrl = "https://dry-leaf-908b.gwajay73.workers.dev/";
       const proxyUrl = `${workerUrl}?url=${encodeURIComponent(originalUrl)}`;
 
@@ -151,5 +136,4 @@
     });
   </script>
 </body>
-
 </html>
